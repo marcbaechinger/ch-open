@@ -32,7 +32,7 @@ and create a file realm:
 HTML5-Client
 =================
 - Run project 'mvc-todo' in Netbeans (http://localhost:8383)
-- A dialog asks for username and password in the format: <user>:<password> (quick hack to avoid a two input field dialog;-)
+- A dialog asks for username and password in the format: &lt;user&gt;:&lt;password&gt; (quick hack to avoid a two input field dialog;-)
 
 - Enter credentials created in the file realm in glassfish (or bla:secret if security not enabled)
 
