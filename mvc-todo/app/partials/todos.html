@@ -1,0 +1,14 @@
+<button ng-click="deleteCompleted()">Delete completed</button>
+<ul class="todo-list">
+    <li ng-repeat="todo in model.todos" ng-class="{completed: todo.done}" ng-click="toggle(todo) "class="todo">
+        <label>    
+                <label ng-click="updateTitle(todo); $event.stopPropagation();">edit</label>
+            {{todo.title}}
+        </label>
+        <div class="description" ng-class="{available: todo.description}">
+            <label ng-click="updateDescription(todo); $event.stopPropagation();">edit</label>
+            {{todo.description || "Beschreibung hinzufügen"}} 
+        </div>
+    </li>
+</ul>
+<button class="sticky-bottom" ng-click="createTodo()">What's to do?</button>
