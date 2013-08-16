@@ -2,11 +2,13 @@ package ch.open.jsworkshop.baas.model;
 
 import java.util.Date;
 import java.util.UUID;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author marcbaechinger
  */
+@XmlRootElement
 public class ToDo {
     private String id;
     private String title;
