@@ -30,12 +30,14 @@ describe("Testing observable", function() {
 	});
 	
 	it("should be able to unbind event listeners", function() {
-		var payload = "adas",
+		var payload = "token",
 			event = "action",
 			listener = function (data) {
-				expect(1).toEqual(2);
+				expect(payload).toEqual("token");
 			};
 		observable.bind(event, listener);
+		observable.emit(event, payload);
+		payload = "";
 		observable.unbind(event, listener);
 		// trigger event "action"
 		observable.emit(event, payload);
