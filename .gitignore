@@ -1,1 +1,9 @@
 05-Architecture/baas/target
+/05-Architecture/jquery-rest/nbproject/private/
+
+node_modules
+04-Toolchain/jquery-app/build
+libpeerconnection.log
+04-Toolchain/tools-grunt-app/build
+04-Toolchain/tools-grunt-app/nbproject/private/private.properties
+04-Toolchain/tools-grunt-app/nbproject/private/private.xml
