@@ -2,7 +2,9 @@
 module.exports = function(grunt) {
 
 	var DEFAULT_TASKS = ["jshint", "copy", "concat", "cssmin", "htmlcompressor", "uglify"],
-		WATCH_FILES = ['public_html/js/**/*.js','public_html/**/*.html','public_html/**/*.css'];
+		WATCH_FILES = ['public_html/js/**/*.js','public_html/**/*.html','public_html/**/*.css'],
+		DOC_ROOT = "public_html/",
+		DIST_DIR = "build/";
 		
 	// Project configuration.
 	grunt.initConfig({
@@ -10,7 +12,7 @@ module.exports = function(grunt) {
 		copy: {
 			dist: {
 				files: [
-					{expand: true, src: ['public_html/**'], dest: 'build/'}
+					{expand: true, src: [DOC_ROOT + '**'], dest: DIST_DIR}
 				]
 			}
 		},
@@ -20,12 +22,12 @@ module.exports = function(grunt) {
 			},
 			js: {
 				src: [
-					'public_html/js/observable.js',
-					'public_html/js/todo-service.js',
-					'public_html/js/application-controller.js',
-					'public_html/js/main.js'
+					DOC_ROOT + 'js/observable.js',
+					DOC_ROOT + 'js/todo-service.js',
+					DOC_ROOT + 'js/application-controller.js',
+					DOC_ROOT + 'js/main.js'
 				],
-				dest: 'build/public_html/js/main.js'
+				dest: DIST_DIR + 'public_html/js/main.js'
 			}
 		},
 		uglify: {
@@ -33,21 +35,24 @@ module.exports = function(grunt) {
 				banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
 			},
 			build: {
-				src: 'build/public_html/js/main.js',
-				dest: 'build/public_html/js/main.min.js'
+				src: DIST_DIR + DOC_ROOT + "js/main.js",
+				dest: DIST_DIR + DOC_ROOT + "js/main.min.js"
 			}
 		},
 		cssmin: {
-		  combine: {
-		    files: {
-		      'build/public_html/css/<%= pkg.name %>-styles.css': ['public_html/css/layout.css', 'public_html/css/components.css', "public_html/css/animations.css"]
-		    }
-		  }
+			combine: {
+				files: {
+					'build/public_html/css/<%= pkg.name %>-styles.css':
+						[ DOC_ROOT + 'css/layout.css',
+						  DOC_ROOT + 'css/components.css',
+						  DOC_ROOT + "css/animations.css" ]
+				}
+			}
 		},
 		htmlcompressor: {
 			compile: {
 				files: {
-					'build/public_html/index.html': 'public_html/index.html'
+					'build/public_html/index.html': DOC_ROOT + 'index.html'
 				},
 				options: {
 					type: 'html',
@@ -124,7 +129,7 @@ module.exports = function(grunt) {
 				"passfail":     false,
 				"white":        false
 			},
-			all: ['Gruntfile.js', 'public_html/js/*.js']
+			all: ['Gruntfile.js', DOC_ROOT + 'js/*.js']
 		},
 		karma: {
 			unit: {
@@ -136,7 +141,7 @@ module.exports = function(grunt) {
 				options:{
 					port: 9000,
 					hostname: "0.0.0.0",
-					base: "build/public_html",
+					base: DIST_DIR + DOC_ROOT,
 				    middleware: function(connect, options) {
 						return [
 							// Load the middleware provided by the livereload plugin
