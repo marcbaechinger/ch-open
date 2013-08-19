@@ -16,9 +16,11 @@ describe("Testing observable", function() {
 		var payload = "adas";
 		observable.bind("action", function (data) {
 			expect(data).toEqual(data);
+			payload = "done";
 		});
 		// trigger event
 		observable.emit("action", payload);
+		expect(payload).toEqual("done");
 	});
 	
 	it("should bind the observable to 'this' inside the listener", function() {
