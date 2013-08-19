@@ -2,7 +2,7 @@
 module.exports = function(grunt) {
 
 	var DEFAULT_TASKS = ["jshint", "copy", "concat", "cssmin", "htmlcompressor", "uglify"],
-		WATCH_FILES = ['public_html/js/**/*.js','public_html/**/*.html','public_html/**/*.css'],
+		WATCH_FILES = ['Gruntfile.js', 'public_html/js/**/*.js','public_html/**/*.html','public_html/**/*.css'],
 		DOC_ROOT = "public_html/",
 		DIST_DIR = "build/";
 		
@@ -12,7 +12,11 @@ module.exports = function(grunt) {
 		copy: {
 			dist: {
 				files: [
-					{expand: true, src: [DOC_ROOT + '**'], dest: DIST_DIR}
+					{
+						expand: true,
+						src: [DOC_ROOT + '**'],
+						dest: DIST_DIR
+					}
 				]
 			}
 		},
