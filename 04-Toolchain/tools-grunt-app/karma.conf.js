@@ -14,7 +14,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-		'test/**/*Spec.js'
+		"public_html/js/observable.js", "test/**/*Spec.js"
     ],
 
 

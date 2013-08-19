@@ -7,9 +7,9 @@ describe("Testing observable", function() {
 
 	it("should have a public api", function() {
 		expect(observable).toBeDefined();
-		expect(observable.bind).toBeDefined();
-		expect(observable.unbind).toBeDefined();
-		expect(observable.emit).toBeDefined();
+		expect(typeof observable.bind).toEqual("function");
+		expect(typeof observable.unbind).toEqual("function");
+		expect(typeof observable.emit).toEqual("function");
 	});
 	
 	it("should be able to bind event listeners", function() {
@@ -42,5 +42,4 @@ describe("Testing observable", function() {
 		// trigger event "action"
 		observable.emit(event, payload);
 	});
-	
 });
