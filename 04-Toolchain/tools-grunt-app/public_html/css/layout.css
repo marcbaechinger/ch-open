@@ -1,5 +1,5 @@
 html, body, section, div, header, footer, nav, ul, li, button, input, textarea, h1, h2, h3, h4, h5, h6,
-img, p, a, label, span, canvas, video, table, td, th, tr, thead, tbody {
+img, p, a, label, span, canvas, video, table, td, th, tr, thead, tbody, i {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
