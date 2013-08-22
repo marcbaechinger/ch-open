@@ -36,7 +36,7 @@ JsKoansReporter.prototype.reportRunnerStarting = function(runner) {
   this.outerDiv = this.createDom('div', { className: 'jasmine_reporter show-passed show-skipped' },
       this.createDom('h1', { }, "Learn about " + this.topic),
       this.runnerDiv = this.createDom('div', { className: 'runner running' },
-        this.runnerMessageSpan = this.createDom('span', { classname: 'running' }, "Contemplating naval..."),
+        this.runnerMessageSpan = this.createDom('span', { classname: 'running' }, "Checking your expectations..."),
         this.finishedAtSpan = this.createDom('span', { className: 'finished-at' }, ""))
       );
 

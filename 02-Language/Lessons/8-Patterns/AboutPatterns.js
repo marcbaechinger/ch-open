@@ -1,4 +1,6 @@
-lesson("About Patterns", function() {
+/*global lesson, learn */
+
+lesson("About Patterns", function () {
 
   learn("...", function() {
 
