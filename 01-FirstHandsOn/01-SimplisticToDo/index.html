@@ -39,11 +39,12 @@
 
         <script>
             function addText(){
-                var input = document.getElementById('input').value;
+                var input = document.getElementById('input');
                 var node=document.createElement("h3");
-                var textnode=document.createTextNode(input);
+                var textnode=document.createTextNode(input.value);
                 node.appendChild(textnode);
                 document.getElementById('do').appendChild(node);
+                input.value = "";
             }
         </script>
     </body>
