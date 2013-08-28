@@ -4,6 +4,10 @@
 /05-Architecture/jquery-rest/nbproject/private/
 
 node_modules
+
+#explicitly include node_modules -> best practice?
+!01-FirstHandsOn/02-SimplisticToDo-refactored/node_modules
+
 04-Toolchain/jquery-app/build
 libpeerconnection.log
 04-Toolchain/tools-grunt-app/build
