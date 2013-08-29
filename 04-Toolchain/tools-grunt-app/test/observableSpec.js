@@ -15,7 +15,7 @@ describe("Testing observable", function() {
 	it("should be able to bind event listeners", function() {
 		var payload = "adas";
 		observable.bind("action", function (data) {
-			expect(data).toEqual(data);
+			expect(payload).toEqual(data);
 			payload = "done";
 		});
 		// trigger event
