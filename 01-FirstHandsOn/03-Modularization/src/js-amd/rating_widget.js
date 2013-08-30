@@ -1,9 +1,9 @@
 /* global Raphael */
 
-(function() {
+define(function(require, exports, module) {
     "use strict";
 
-    var DrawingModule = require("./drawing_module.js");
+    var DrawingModule = require("drawing_module.js");
 
     var moods = ['Rubbish', 'Not Good', 'OK', 'Smily', 'Positively Manic'];
     var colors = ['#cc0000', '#a97e22', '#9f9136', '#7c9a2d', '#3a9a2d'];
@@ -38,7 +38,7 @@
 
         this.init();
         for (var i = 0; i < this._mood; i += 1) {
-            var color2 = colors[this._mood - 1];
+            var color = colors[this._mood - 1];
             var start = {left: LEFT, bottom: BOTTOM};
             var end = {left: LEFT + 42 * (i + 1), bottom: BOTTOM};
             var delay = i * 50;
@@ -48,5 +48,5 @@
         this._paper.text(LEFT, BOTTOM + 30, moods[this._mood - 1]).attr({fill: colors[this._mood - 1]});
     };
 
-}());
+});
 

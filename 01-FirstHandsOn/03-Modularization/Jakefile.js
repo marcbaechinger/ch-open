@@ -5,6 +5,7 @@
 	var shell = require("shelljs");
 	var uglify = require("uglify-js");
     var browserify = require("browserify");   // CommonJS
+    var requirejs = require("requirejs");     // AMD
 
 	var lint = require("./build/utils/lint_runner.js");
 
@@ -13,20 +14,16 @@
     var DISTRIBUTION_CSS_DIR = DISTRIBUTION_DIR + "/css";
 
     var DISTRIBUTION_COMMONJS_DIR = DISTRIBUTION_DIR + "/js-commonjs";
-    var DISTRIBUTION_AMD_DIR = DISTRIBUTION_DIR + "/amd";
-
-    desc("Start Karma server -- run this first");
-    task("karma", function() {
-        karma.serve(complete, fail);
-    }, {async: true});
+    var DISTRIBUTION_AMD_DIR = DISTRIBUTION_DIR + "/js-amd";
 
 	desc("Default Build");
-	task("default", ["clean", "lint", "package"], function() {
+	task("default", ["clean", "lint", "commonjs", "amd"], function() {
 		console.log("\n\nOK");
 	});
 
 	desc("Clean");
 	task("clean", function() {
+        console.log("* Build Step: Clean");
 		shell.rm("-rf", DISTRIBUTION_DIR);
 	})
 
@@ -57,12 +54,35 @@
         });
     }, {async: true});
 
+    desc("Build CommonJS example");
+    task("amd", ["lint", "create_package_structure", "amd_dist"]);
+
+    task("amd_clean", [], function() {
+        shell.rm("-rf", DISTRIBUTION_AMD_DIR + "/*");
+        shell.cp("-R", "src/js-amd/*.html", DISTRIBUTION_AMD_DIR);
+        shell.cp("-R", "src/js-amd/main.js", DISTRIBUTION_AMD_DIR);
+    });
+
+    task("amd_dist", ["amd_clean"], function() {
+        console.log("* Build Step: Building AMD distribution");
+        var config = {
+            baseUrl: "src/js-amd",
+            name: "rating_widget",
+            out: DISTRIBUTION_AMD_DIR + "/rating_widget.js"
+        };
+        requirejs.optimize(config, complete, function(err) {
+            console.log("AMD fail", err);
+            fail();
+        });
+    }, {async: true});
+
     desc("create package structure");
     task("create_package_structure", function(){
         shell.mkdir("-p", DISTRIBUTION_DIR);
         shell.mkdir("-p", DISTRIBUTION_VENDOR_DIR);
         shell.mkdir("-p", DISTRIBUTION_CSS_DIR);
         shell.mkdir("-p", DISTRIBUTION_COMMONJS_DIR);
+        shell.mkdir("-p", DISTRIBUTION_AMD_DIR);
 
         shell.cp('-Rf', 'src/vendor/*', DISTRIBUTION_VENDOR_DIR);
         shell.cp('-Rf', 'src/css/*', DISTRIBUTION_CSS_DIR);
@@ -107,6 +127,9 @@
 			require: false,
 			module: false,
 			exports: false,
+
+            // AMD
+            define: false,
 
             // Jasmine
             describe: false,

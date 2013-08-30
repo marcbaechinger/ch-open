@@ -9,6 +9,7 @@
     "uglify-js": "~2.4.0",
     "browserify": "~2.29.0",
     "jshint": "~2.1.10",
-    "jake": "~0.6.11"
+    "jake": "~0.6.11",
+    "requirejs": "~2.1.8"
   }
 }
