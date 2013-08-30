@@ -38,7 +38,7 @@
 
         this.init();
         for (var i = 0; i < this._mood; i += 1) {
-            var color2 = colors[this._mood - 1];
+            var color = colors[this._mood - 1];
             var start = {left: LEFT, bottom: BOTTOM};
             var end = {left: LEFT + 42 * (i + 1), bottom: BOTTOM};
             var delay = i * 50;
