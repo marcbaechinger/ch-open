@@ -7,7 +7,7 @@
 
     var DrawingModule = global.rating.DrawingModule;
 
-    var moods = ['Rubbish', 'Not Good', 'OK', 'Smily', 'Positively Manic'];
+    var moods = ['Rubbish', 'Not Good', 'OK', 'Smily', 'Crazy'];
     var colors = ['#cc0000', '#a97e22', '#9f9136', '#7c9a2d', '#3a9a2d'];
 
     var LEFT = 30;
