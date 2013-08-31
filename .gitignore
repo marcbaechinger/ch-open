@@ -2,9 +2,6 @@
 
 node_modules
 
-#explicitly include node_modules -> best practice?
-!01-FirstHandsOn/02-SimplisticToDo-refactored/node_modules
-
 01-FirstHandsOn/02-SimplisticToDo-refactored/dist
 02-Language/02-Modularization/dist
 
