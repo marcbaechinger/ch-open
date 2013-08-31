@@ -12,7 +12,7 @@ The second approach (browserify) needs a build step before you can run the examp
 To execute the build you need node and npm, then do the following:
 
 * `npm install` -> this installs all the needed npm packages as specified in package.json
-* `.\jake.sh`-> this runs the complete build as specified in Jakefile.js the result is the `dist` directory (Sorry there is no Wiindows script yet...)
+* `.\jake.sh`-> this runs the complete build as specified in Jakefile.js the result is the `dist` directory (sorry there is no Windows script yet...)
 
 
 ## How to run
