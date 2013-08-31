@@ -28,7 +28,7 @@
     }, {async: true});
 
 	desc("Default Build");
-	task("default", ["clean", "lint", "test", "package"], function() {
+	task("default", ["clean", "lint", "package"], function() {
 		console.log("\n\nOK");
 	});
 
