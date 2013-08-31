@@ -12,12 +12,15 @@
     var BOTTOM = 50;
     var RADIUS = 20;
 
-    var MoodWidget = module.exports = function MoodWidget(domElement){
+    var MoodWidget = function MoodWidget(domElement){
         this._mood = 1;
         this._paper = new Raphael(domElement, 350, 100);
         this._drawingModule = new DrawingModule(this._paper);
         this.init();
     };
+
+    // Export the module to make it accessible
+    module.exports = MoodWidget;
 
     MoodWidget.prototype.setMood = function (mood) {
         this._mood = mood;

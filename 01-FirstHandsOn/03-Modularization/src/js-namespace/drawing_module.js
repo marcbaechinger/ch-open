@@ -3,9 +3,12 @@
 
     global.rating = global.rating || {};
 
-    var DrawingModule = global.rating.DrawingModule = function DrawingModule(paper){
+    var DrawingModule =  function DrawingModule(paper){
         this._paper = paper;
     };
+
+    // Export the module to make it accessible
+    global.rating.DrawingModule = DrawingModule;
 
     DrawingModule.prototype.drawAnimatedCircle = function(color, radius, start, end, delay) {
         var that = this;

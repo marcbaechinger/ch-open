@@ -1,9 +1,12 @@
 (function() {
     "use strict";
 
-    var DrawingModule = module.exports = function DrawingModule(paper){
+    var DrawingModule = function DrawingModule(paper){
         this._paper = paper;
     };
+
+    // Export the module to make it accessible
+    module.exports = DrawingModule;
 
     DrawingModule.prototype.drawAnimatedCircle = function(color, radius, start, end, delay) {
         var that = this;
@@ -14,6 +17,5 @@
             }).animate({cx:end.left, cy: end.bottom , r:radius }, 2000, "bounce" ).toBack();
         }, delay);
     };
-
 
 }());
