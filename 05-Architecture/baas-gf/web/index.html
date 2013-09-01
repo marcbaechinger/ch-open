@@ -1,14 +1,45 @@
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
 <!DOCTYPE html>
 <html>
     <head>
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            body {
+                padding: 42px;
+            }
+            section > div {
+                font-family: "Courier New";
+                font-size: 12px;
+                margin-bottom: 32px;
+                border: 1px solid #999;
+                border-radius: 5px;
+                padding: 8px 12px;
+                background-color: #f9f8c7;
+                box-shadow: 2px 2px 18px #000;
+            }
+        </style>
     </head>
     <body>
-        <div>TODO write content</div>   
+        <section>
+            <div>
+                curl -X GET --verbose --insecure -u chopen2013:chopen2013 https://localhost:8181/baas-gf/api/todo
+            </div>
+            
+            <div>
+                curl -X GET --verbose --insecure -u chopen2013:chopen2013 https://localhost:8181/baas-gf/api/todo/94dcdcf7-f2eb-4e21-97b8-d3e52240329e
+            </div>
+            
+            <div>
+                curl -X PUT --verbose --insecure -u chopen2013:chopen2013 -H "Accept: application/json" -H "Content-type: application/json" https://localhost:8181/baas-gf/api/todo -d '{"title": "Ein Todo-Eintrag"}'
+            </div>
+            
+            <div>
+                curl -X POST --verbose --insecure -u chopen2013:chopen2013 -H "Accept: application/json" -H "Content-type: application/json" https://localhost:8181/baas-gf/api/todo/22f8818f-f37c-486e-b790-8fecb81332d0 -d '{"id": "22f8818f-f37c-486e-b790-8fecb81332d0", "title": "Ein Todo-Eintrag"}'
+            </div>
+            
+            <div>
+                curl -X DELETE --verbose --insecure -u chopen2013:chopen2013 https://localhost:8181/baas-gf/api/todo/94dcdcf7-f2eb-4e21-97b8-d3e52240329e
+            </div>
+        </section>   
     </body>
 </html>
