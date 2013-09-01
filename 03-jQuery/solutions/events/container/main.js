@@ -4,7 +4,7 @@
 	
 	var dialog = $("#dialog");
 	
-	dialog.delegate("footer button", "click", function (ev) {
+	dialog.on("click", "footer button", function (ev) {
 		var target = $(ev.target),
 			action = target.data("action");
 			
