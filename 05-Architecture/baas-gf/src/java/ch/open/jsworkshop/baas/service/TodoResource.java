@@ -82,9 +82,9 @@ private static final Map<String, ToDo> database = new HashMap<>();
     
     @DELETE
     @Path("/{uuid}")
-    public void deleteToDo(@PathParam("uuid") String id) {
+    public ToDo deleteToDo(@PathParam("uuid") String id) {
         if (database.containsKey(id)) {
-            database.remove(id);
+            return database.remove(id);
         } else {
             throw new WebApplicationException(Response.Status.NOT_FOUND);
         }
