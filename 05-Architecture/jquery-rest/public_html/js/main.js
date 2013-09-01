@@ -29,9 +29,13 @@ $(function () {
         
         id = prompt("id of todo", id);
                 
-        service.get(id, function (todo) {
-            uiLog(JSON.stringify(todo, null, 4));
-        });
+        service.get(id, 
+            function success(todo) {
+                uiLog(JSON.stringify(todo, null, 4));
+            }, 
+            function error() {
+                alert("Todo mit id " + id + " nicht gefunden");
+            });
     });
     
     // register click handler 
@@ -39,7 +43,7 @@ $(function () {
         var todo = {
             title: "Encapsulate ajax",
             description: "encapsulate all jquery ajax calls in a service with a sound api"
-        };
+        };  
         
         service.createToDo(todo, function (todo) {
                 uiLog(JSON.stringify(todo, null, 4));
@@ -56,9 +60,13 @@ $(function () {
             alert("Eingabe in der Textarea ist kein valides JSON");
         }
         
-        service.updateToDo(todo, function (todo) {
+        service.updateToDo(todo, 
+            function success (todo) {
                 uiLog(JSON.stringify(todo, null, 4));
-        });
+            },
+            function error() {
+                alert("Update des Todos gescheitert. Stimmt die uuid?")
+            });
     });
     
     
@@ -67,9 +75,13 @@ $(function () {
         
         id = prompt("id of todo", id);
         
-        service.deleteToDo(id, function (todo) {
+        service.deleteToDo(id, 
+            function success (todo) {
                 uiLog("service.deleteToDo(id cb) ", JSON.stringify(todo, null, 4));
-        });
+            },
+            function error() {
+                alert("Das Löschen des Eintrages ist fehlgeschlage. Stimmt die uuid?");
+            });
     });
 });
 
