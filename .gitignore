@@ -13,3 +13,5 @@ libpeerconnection.log
 
 05-Architecture/baas/target
 05-Architecture/jquery-rest/nbproject/private/
+/05-Architecture/baas-gf/nbproject/private/
+/05-Architecture/baas-gf/build/
