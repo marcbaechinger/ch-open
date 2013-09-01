@@ -35,6 +35,7 @@
 		// see: http://api.jquery.com/event.stopPropagation/
 	});
 	
+	// catch leaking clicks on image at top of the DOM (document)
 	$(document).on("click", "img", function (ev) {
 		alert("Verhindere das Propagieren der Events");
 	});
