@@ -12,5 +12,5 @@
 	// task 4 ==> select the 'section' element which is a direct child of the body
 	$("body > section").removeClass("badge");
 	
-	// check resulting browser view: 4 badges with Zico are shown in a grid
+	// check resulting browser view: 4 badges with a football player are shown in a grid
 }());
