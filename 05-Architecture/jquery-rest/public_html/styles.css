@@ -15,10 +15,11 @@ html, body, .content {
     height: 100%;
     width: 100%;
     margin: 0;
-    width: 50%;
+    width: 80%;
     float: left;
 }
 .content > ul {
+    width: 20%;
     background-color: #ededed;
     list-style: none;
     padding: 20px;

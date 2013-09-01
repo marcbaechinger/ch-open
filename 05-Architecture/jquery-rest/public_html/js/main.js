@@ -28,14 +28,16 @@ $(function () {
         var id = $(ev.target).data("id");
         
         id = prompt("id of todo", id);
-                
-        service.get(id, 
-            function success(todo) {
-                uiLog(JSON.stringify(todo, null, 4));
-            }, 
-            function error() {
-                alert("Todo mit id " + id + " nicht gefunden");
-            });
+        
+        if (id) {
+            service.get(id, 
+                function success(todo) {
+                    uiLog(JSON.stringify(todo, null, 4));
+                }, 
+                function error() {
+                    alert("Todo mit id " + id + " nicht gefunden");
+                });
+        }
     });
     
     // register click handler 
@@ -56,17 +58,19 @@ $(function () {
         
         try {
             todo = JSON.parse(textarea.val());
+            
+            service.updateToDo(todo, 
+                function success (todo) {
+                    uiLog(JSON.stringify(todo, null, 4));
+                },
+                function error() {
+                    alert("Update des Todos gescheitert. Stimmt die uuid?")
+                });
+                
         } catch (e) {
             alert("Eingabe in der Textarea ist kein valides JSON");
         }
         
-        service.updateToDo(todo, 
-            function success (todo) {
-                uiLog(JSON.stringify(todo, null, 4));
-            },
-            function error() {
-                alert("Update des Todos gescheitert. Stimmt die uuid?")
-            });
     });
     
     
@@ -75,13 +79,18 @@ $(function () {
         
         id = prompt("id of todo", id);
         
-        service.deleteToDo(id, 
-            function success (todo) {
-                uiLog("service.deleteToDo(id cb) ", JSON.stringify(todo, null, 4));
-            },
-            function error() {
-                alert("Das Löschen des Eintrages ist fehlgeschlage. Stimmt die uuid?");
-            });
+        if (id) {
+            service.deleteToDo(id, 
+                function success (todo) {
+                    uiLog("service.deleteToDo(id cb) ", JSON.stringify(todo, null, 4));
+                },
+                function error() {
+                    alert("Das Löschen des Eintrages ist fehlgeschlage. Stimmt die uuid?");
+                });
+        }
     });
+    
+    // load source code of TodoService into text area at startup
+    $("#response").load("js/services.js");
 });
 
