@@ -3,8 +3,17 @@ $(function () {
     var DELIMITER = "\n\n";
     
     // new service instance
-    var service = new window.service.ToDoService({}),
-        textarea = $("#response"),
+    var service = new window.service.ToDoService({});
+    
+    // add basic authorization header to all requests made by jQuery
+    $.ajaxPrefilter( function( options, originalOptions, jqXHR ) {
+        options.headers = {
+            Authorization: "Basic " + btoa("chopen2013:chopen2013")   //Y2hvcGVuMjAxMzpjaG9wZW4yMDEz
+        };
+    });
+
+    // ui stuff to log messages to textarea
+    var textarea = $("#response"),
         uiLog = function () {
             var buf = "", i;
             
@@ -13,6 +22,7 @@ $(function () {
             }
             textarea.val(buf);
         };
+        
     
     
     // register click handler 

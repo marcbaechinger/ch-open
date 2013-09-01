@@ -1,6 +1,6 @@
 (function (global) {
     var ToDoService = function (spec) {
-        this.base = spec.base || "http://localhost:8080/baas-gf/api/";
+        this.base = spec.base || "https://localhost:8181/baas-gf/api/";
     };
     
     ToDoService.prototype.getAll = function(callback, errorCallback) {
