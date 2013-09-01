@@ -4,8 +4,8 @@
 	
 	var Dialog = function (spec) {
 		this.spec = spec;
-		// select container
-		this.container = $("#" + spec.id);
+		// task-1: select container with by id from 'spec.id'
+		this.container = $("REPLACE_ME");
 		// delegate button clicks
 		this.container.on("click", $.proxy(this.delegate, this));
 	};
@@ -14,28 +14,40 @@
 		var target = $(ev.target),
 			action = target.data("action");
 		
-		if (this.spec.actions && this.spec.actions[action]) {
-			this.spec.actions[action].call(this, ev);
-		} else if (action === "save") {
-			this.container.trigger("save.myApp", {
-				password: this.container.find("[name=password]").val(),
-				email: this.container.find("[name=email]").val(),
-			});
+		if (action === "save") {
+			// task-2: fire customer event 'save.myApp' and pass a data object 
+			//         with 'password' and 'email' properties
+			// [...]
 		} else if (action === "cancel") {
-			this.container.find("input").val("");
-			this.container.addClass("away");
+			// task-3: find all input elements in the conainer and 
+			//         set it value to an empty string
+			// [...]
+			
+			// task-4: add class 'away' to the container of the dialog 
+			//         to animate the dialog off the screen
+			// [...]
+			
 		}
 		ev.preventDefault();
 		ev.stopPropagation();
 	};
-	
-	global.Dialog = Dialog;
+
+	// task-5: expose Dialog to global.Dialog to be accessible in the global space
+	global.Dialog = "REPLACE_ME";
 }(this));
 
+/*
+assert in webbrowser:
+=========================
+	same behaviour like dialog in events/container/
+*/
 var dialog = new Dialog({
 	id: "dialog"
 });
 
+
+// here the custom event is catched 
+// and the data argument shown as an alert
 dialog.container.on("save.myApp", function (ev, data) {
-	alert("saved data: " + JSON.stringify(data));
+	alert("form data: " + JSON.stringify(data));
 });
