@@ -3,9 +3,9 @@
 
 	var REQUIRED_BROWSERS = [
 //		["IE 8.0", "Windows"],
-		//["IE 9.0", "Windows"],
+//		["IE 9.0", "Windows"],
 //		["Firefox 23.0", "Mac"],
-		["Chrome 29.0", "Mac"],
+//		["Chrome 29.0", "Mac"],
 //		["Safari 6.0", "Mac"]
 //		["Mobile Safari 6.0", "iOS"]
 	];
