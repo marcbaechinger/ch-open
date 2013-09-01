@@ -1,6 +1,6 @@
 .idea
-
 node_modules
+target
 
 01-FirstHandsOn/02-SimplisticToDo-refactored/dist
 02-Language/02-Modularization/dist
