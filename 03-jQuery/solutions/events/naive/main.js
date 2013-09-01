@@ -29,4 +29,12 @@
 	$(document).on("click", "img", function (ev) {
 		alert("Verhindere das Propagieren der Events");
 	});
+	
+	/*
+	assert in webbrowser:
+	=========================
+		(task-1) hover over the left image lets the right image start to spin
+		(task-2) right image stops spinning on mouse out of the left image
+		(task-3) clicking the left image does not show an alert bar
+	*/
 }(this));
