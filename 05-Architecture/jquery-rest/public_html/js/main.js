@@ -2,7 +2,7 @@
 $(function () {
     var DELIMITER = "\n\n";
     
-    // new service instance
+    // task-1: creaete a new service instance from window.service.ToDoService
     var service = new window.service.ToDoService({});
     
     // add basic authorization header to all requests made by jQuery
@@ -25,15 +25,14 @@ $(function () {
         
     
     
-    // register click handler 
+    // exersice 1: 
     $(".get-all").on("click", function (ev) {
+		// task-1: call 'getAll' function of the service and pass a callback
         service.getAll(function (todos) {
             uiLog(JSON.stringify(todos, null, 4));
         });
     });
     
-    // task: use the service to get a todo by id
-    // task: use the jquery data(key) method to get the id from the DOM
     $(".get").on("click", function (ev) {
         var id = $(ev.target).data("id");
         
@@ -83,7 +82,7 @@ $(function () {
         
     });
     
-    
+    // register click handler 
     $(".delete").on("click", function (ev) {
         var id = $(ev.target).data("id");
         

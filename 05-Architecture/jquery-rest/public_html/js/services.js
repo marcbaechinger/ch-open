@@ -1,5 +1,6 @@
 (function (global) {
     var ToDoService = function (spec) {
+		spec = spec || {};
         this.base = spec.base || "https://localhost:8181/baas-gf/api/";
     };
     
