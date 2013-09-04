@@ -1,21 +1,21 @@
 var MyCtrl = function($scope) {
-    $scope.items = [
-        {name: 'Beer', price: 3.50, delivered: "2013-08-05"},
-        {name: 'Cola', price: 4.20, delivered: "2013-08-06"}];
+    $scope.ratings = [
+        {name: 'Will Hunting', rating: 3.50, entered: "2013-08-05"}
+        ];
 
     $scope.pluralizer = {
-        0: "No beverages!",
-        1: "Only one left!",
-        other: "{} beverages left."
+        0: "No rating!",
+        1: "Only one rating!",
+        other: "{} ratings."
     }
 
     $scope.addBeverage = function(){
-        $scope.items.push({name: $scope.name, price: $scope.price, delivered: new Date()});
+        $scope.ratings.push({name: $scope.name, rating: $scope.rating, entered: new Date()});
     }
 
     $scope.removeItem = function(item){
-        if(confirm("Remove this beverage. Sure?")){
-            $scope.items.splice($scope.items.indexOf(item), 1);
+        if(confirm("Remove this rating. Sure?")){
+            $scope.ratings.splice($scope.ratings.indexOf(item), 1);
         }
     }
 }

@@ -9,19 +9,20 @@
 
 <div class="container" ng-app >
     <div class="hero-unit">
-        <h1>Hello Angular!</h1>
+        <h1>Course Rater</h1>
+        <p>Demonstrating a simple AngularJS App.</p>
     </div>
     <div class="row" ng-controller="MyCtrl">
         <div class="span4">
             <p>
-                <label>Beverage name:</label>
-                <input type="text" ng-model="name"/>
+                <label>Rating (1-5):</label>
+                <input type="text" ng-model="rating"/>
             </p>
             <p>
-                <label>Beverage Price:</label>
-                <input type="text" ng-model="price"/>
+                <label>Your Name:</label>
+                <input type="text" ng-model="name"/>
             </p>
-            <h4>Beverage {{ name }} {{ price }}</h4>
+            <h4> {{ name }} entered: {{ rating }}</h4>
             <p>
                 <button class="btn btn-success" ng-click="addBeverage()">Add</button>
             </p>
@@ -33,19 +34,19 @@
                         <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Price</th>
-                            <th>Delivered</th>
+                            <th>Rating</th>
+                            <th>Entered</th>
                         </tr>
                         </thead>
 
-                        <tr ng-repeat="item in items">
+                        <tr ng-repeat="item in ratings">
                             <td>{{ item.name }}</td>
-                            <td>{{ item.price | currency }}</td>
-                            <td>{{ item.delivered | date:'fullDate' }}</td>
+                            <td>{{ item.rating }}</td>
+                            <td>{{ item.entered | date:'fullDate' }}</td>
                             <td><button class="btn btn-danger" ng-click="removeItem(item)">Remove</button></td>
                         </tr>
                     </table>
-                    <h3> <ng-pluralize count = "items.length" when="pluralizer"></ng-pluralize> </h3>
+                    <h3> <ng-pluralize count = "ratings.length" when="pluralizer"></ng-pluralize> </h3>
                 </div>
             </p>
         </div>
