@@ -23,6 +23,12 @@ lesson("Bad Parts", function() {
         expect(false == 'false').toBe(FILL_ME_IN);
     });
 
+    learn("about some strange type logic", function(){
+        expect(typeof(null)).toBe(FILL_ME_IN);
+        expect(typeof([])).toBe(FILL_ME_IN);
+        expect(typeof(NaN)).toBe(FILL_ME_IN);
+    })
+
     learn("about the quirks of semicolon insertion", function() {
 
         // Can you spot the difference in those functions below?
