@@ -3,7 +3,7 @@
 (function () {
     'use strict';
     
-    var baseUrl = "https://localhost:8181/baas/api/todo",
+    var baseUrl = "https://localhost:8181/baas-gf/api/todo",
         defaultErrorHandler = function (e) {
             console.error("error", arguments);
         },
