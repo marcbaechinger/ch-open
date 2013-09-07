@@ -14,12 +14,12 @@
     <title>CourseRater Angular</title>
 </head>
 <body>
-<div class="container" id="CourseRater">
+<div class="container" >
     <div class="hero-unit">
         <h1>Course Rater Angular</h1>
         <p>Demonstrating a Master-Detail View with AngularJS App.</p>
     </div>
-    <div class="row-fluid" ng-controller="MainCtrl">
+    <div id="CourseRater" class="row-fluid" ng-controller="MainCtrl">
         <div class="span4 sidebar-content">
             <h2>Ratings</h2>
             <div class="rating" ng-repeat="rating in ratings" ng-click="setCurrentRating(rating)">
