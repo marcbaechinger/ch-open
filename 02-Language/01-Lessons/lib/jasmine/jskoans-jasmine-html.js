@@ -33,7 +33,7 @@ JsKoansReporter.prototype.createDom = function(type, attrs, childrenVarArgs) {
 };
 
 JsKoansReporter.prototype.reportRunnerStarting = function(runner) {
-  this.outerDiv = this.createDom('div', { className: 'jasmine_reporter show-passed show-skipped' },
+  this.outerDiv = this.createDom('div', { className: 'jasmine_reporter show-passed' }, //JB: add show-skipped for default
       this.createDom('h1', { }, "Learn about " + this.topic),
       this.runnerDiv = this.createDom('div', { className: 'runner running' },
         this.runnerMessageSpan = this.createDom('span', { classname: 'running' }, "Checking your expectations..."),
@@ -110,7 +110,7 @@ JsKoansReporter.prototype.reportRunnerResults = function(runner) {
           this.createDom('label', { "for": "__jsKoans_showPassed__" }, " Show learned topics"),
           showPassed = this.createDom('input', { id: "__jsKoans_showPassed__", type: 'checkbox', checked: '' }),
           this.createDom('label', { "for": "__jsKoans_showAllFailed__" }, " Look ahead"),
-          showAllFailed = this.createDom('input', { id: "__jsKoans_showAllFailed__", type: 'checkbox', checked: ''})
+          showAllFailed = this.createDom('input', { id: "__jsKoans_showAllFailed__", type: 'checkbox' }) //JB: Add checked for default
           )
         )      
       );
