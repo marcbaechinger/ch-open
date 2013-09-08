@@ -30,6 +30,21 @@
                 <version>2.7</version>
             </plugin>
             <plugin>
+                <groupId>ro.isdc.wro4j</groupId>
+                <artifactId>wro4j-maven-plugin</artifactId>
+                <version>1.6.3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>jshint</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <options>devel,noarg</options>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>com.samaxes.maven</groupId>
                 <artifactId>minify-maven-plugin</artifactId>
                 <version>1.7.1</version>

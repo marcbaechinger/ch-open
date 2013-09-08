@@ -1,4 +1,4 @@
-/* global $ */
+/*global window, $ */
 
 $(function () {
     "use strict";

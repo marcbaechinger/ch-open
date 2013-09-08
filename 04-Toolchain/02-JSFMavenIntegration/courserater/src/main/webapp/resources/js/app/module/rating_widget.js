@@ -1,4 +1,4 @@
-/* global Raphael */
+/*global Raphael  */
 
 (function(global) {
     "use strict";

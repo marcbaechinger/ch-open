@@ -1,3 +1,5 @@
+/*global setTimeout */
+
 (function(global) {
     "use strict";
 
