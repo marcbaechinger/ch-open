@@ -87,23 +87,28 @@
 	}
 
 	function globalLintOptions() {
-		return {
-			bitwise:true,
-			curly:false,
-			eqeqeq:true,
-			forin:true,
-			immed:true,
-			latedef:false,
-			newcap:true,
-			noarg:true,
-			noempty:true,
-			nonew:true,
-			regexp:true,
-			undef:true,
-			strict:true,
-			trailing:true,
-			//globalstrict: true
-		};
+        var jsmin = require('jsmin').jsmin;
+        var stripped_options = jsmin(fs.readFileSync('.jshintrc', "utf8")); // strip comments from .jshintrc
+        var options = JSON.parse(stripped_options);
+
+//		var options = {
+//			bitwise:true,
+//			curly:false,
+//			eqeqeq:true,
+//			forin:true,
+//			immed:true,
+//			latedef:false,
+//			newcap:true,
+//			noarg:true,
+//			noempty:true,
+//			nonew:true,
+//			regexp:true,
+//			undef:true,
+//			strict:true,
+//			trailing:true,
+//			//globalstrict: true
+//		};
+        return options;
 	}
 
 	function browserLintOptions() {

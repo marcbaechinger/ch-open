@@ -1,10 +1,10 @@
-/* global $ */
+/*global $ */
 
 $(registerButtonHandler);
 
 function registerButtonHandler(){
     "use strict";
-     var addBtn = document.getElementById('addBtn');
+    //var addBtn = document.getElementById('addBtn');
 
     $('#addBtn').on('click', addText);
 }
