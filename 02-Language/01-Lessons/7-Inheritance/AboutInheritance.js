@@ -87,6 +87,10 @@ lesson("about classical inheritance", function() {
 lesson("About prototypal inheritance", function() {
     beforeEach(function(){
 
+        // Note: Object.create is only available in ES5
+        // See http://kangax.github.io/es5-compat-table/
+        // For an alternative see: http://javascript.crockford.com/prototypal.html
+
         APP.Pet = function () {
             this.name = "Anonymous";
             this.getName = function() { return this.name; };
