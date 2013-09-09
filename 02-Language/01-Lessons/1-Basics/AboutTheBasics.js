@@ -138,3 +138,21 @@ lesson ("About Variable Scope", function() {
         expect(result).toBe(FILL_ME_IN);
     });
 });
+
+lesson ("about strict mode", function(){
+    learn ("about strict mode", function() {
+
+        function isNotStrictMode(){
+            return !this; // 'this' refers to global object
+        }
+
+        function isStrictMode(){
+            "use strict";
+            return !this; // in strict mode, the keyword 'this' does not refer to global object, unlike traditional JS. So here,'this' is null.
+        }
+
+        expect(isNotStrictMode()).toBe(FILL_ME_IN);
+        expect(isStrictMode()).toBe(FILL_ME_IN);
+
+    });
+});
