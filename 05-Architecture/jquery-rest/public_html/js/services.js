@@ -4,11 +4,18 @@
         this.base = spec.base || "https://localhost:8181/baas-gf/api/";
     };
     
+    // general hints:
+    // - inspect the annotations of the REST service in the baas-gf to now what to call
+    // - docs: http://api.jquery.com/jQuery.ajax/
+    // - use CURL to check responses of REST services
+    
+    // task-1: get all todos from getAll of REST service in baas-gf project
     ToDoService.prototype.getAll = function(callback, errorCallback) {
         $.ajax({
-            url: this.base + "todo",
+            REPLACE_ME: "REPLACE_ME",
             success: function(todos) {
-                callback(todos);
+                // pass todos to callback
+                "REPLACE ME"
             },
             error: function(jqXhr) {
                 if (errorCallback) {
@@ -20,22 +27,14 @@
         });
     };
     
+    // task-2: get a single todo by id from REST service in baas-gf project
     ToDoService.prototype.get = function(id, callback, errorCallback) {
         $.ajax({
-            url: this.base + "todo/" + id,
-            success: function(todo) {
-                callback(todo);
-            },
-            error: function(jqXhr) {
-                var errorMessage = "getting todo by id " + id + " failed";
-                if (errorCallback) {
-                    errorCallback(errorMessage, jqXhr);
-                } else {
-                    console.error(errorMessage, jqXhr);
-                }
-            }
+            // REPLACE_ME
         });
     };
+    
+    // task-3: handle success and errro of PUT request
     ToDoService.prototype.createToDo = function(todo, callback, errorCallback) {
         $.ajax({
             url: this.base + "todo",
@@ -43,57 +42,18 @@
             data: JSON.stringify(todo),
             dataType: "json",
             contentType: "application/json",
-            success: function(todo) {
-                callback(todo);
-            },
-            error: function(jqXhr) {
-                var errorMessage = "creating todo failed";
-                if (errorCallback) {
-                    errorCallback(errorMessage, jqXhr);
-                } else {
-                    console.error(errorMessage, jqXhr);
-                }
-            }
+            
         });
     };
+    
+    // task-4: a POST request is very similar to a PUT request (see above) 
     ToDoService.prototype.updateToDo = function(todo, callback, errorCallback) {
-        $.ajax({
-            url: this.base + "todo/" + todo.id,
-            type: "POST",
-            data: JSON.stringify(todo),
-            dataType: "json",
-            contentType: "application/json",
-            success: function(todo) {
-                callback(todo);
-            },
-            error: function(jqXhr) {
-                var errorMessage = "creating todo failed";
-                if (errorCallback) {
-                    errorCallback(errorMessage, jqXhr);
-                } else {
-                    console.error(errorMessage, jqXhr);
-                }
-            }
-        });
+        
     };
     
-    
+    // task-5: if you down here. A delete is a snap for you ;-)
     ToDoService.prototype.deleteToDo = function(id, callback, errorCallback) {
-        $.ajax({
-            url: this.base + "todo/" + id,
-            type: "DELETE",
-            success: function(todo) {
-                callback(todo);
-            },
-            error: function(jqXhr) {
-                var errorMessage = "deleting todo " + id + " failed";
-                if (errorCallback) {
-                    errorCallback(errorMessage, jqXhr);
-                } else {
-                    console.error(errorMessage, jqXhr);
-                }
-            }
-        });
+        
     };
     
     global.service = {
