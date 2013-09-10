@@ -9,11 +9,11 @@ var MyCtrl = function($scope) {
         other: "{} ratings."
     }
 
-    $scope.addBeverage = function(){
+    $scope.addRating = function(){
         $scope.ratings.push({name: $scope.name, rating: $scope.rating, entered: new Date()});
     }
 
-    $scope.removeItem = function(item){
+    $scope.removeRating = function(item){
         if(confirm("Remove this rating. Sure?")){
             $scope.ratings.splice($scope.ratings.indexOf(item), 1);
         }
