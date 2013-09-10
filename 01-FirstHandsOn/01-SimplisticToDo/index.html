@@ -23,7 +23,7 @@
                 <div class="span6">
                     <h2>Add a ToDo Item:</h2>
                     <input type="text" id="input"/>
-                    <p><a class="btn btn-primary btn-large" href="#" onclick='addText()'>Add &raquo;</a></p>
+                    <p><a id="addBtn" class="btn btn-primary btn-large" href="#" onclick="addText()">Add &raquo;</a></p>
                 </div>
                 <div class="span6">
                     <h2>Items:</h2>
@@ -39,11 +39,11 @@
 
         <script>
             function addText(){
-                var input = document.getElementById('input');
+                var input = document.getElementById("input");
                 var node=document.createElement("h3");
                 var textnode=document.createTextNode(input.value);
                 node.appendChild(textnode);
-                document.getElementById('do').appendChild(node);
+                document.getElementById("do").appendChild(node);
                 input.value = "";
             }
         </script>
