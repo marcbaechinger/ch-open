@@ -14,7 +14,7 @@
     var BOTTOM = 50;
     var RADIUS = 20;
 
-    var MoodWidget = function MoodWidget(domElement){
+    var RatingWidget = function RatingWidget(domElement){
         this._mood = 1;
         this._paper = new Raphael(domElement, 350, 100);
         this._drawingModule = new DrawingModule(this._paper);
@@ -22,13 +22,13 @@
     };
 
     // Export the module to make it accessible
-    global.rating.RatingWidget = MoodWidget;
+    global.rating.RatingWidget = RatingWidget;
 
-    MoodWidget.prototype.setMood = function (mood) {
+    RatingWidget.prototype.setMood = function (mood) {
         this._mood = mood;
     };
 
-    MoodWidget.prototype.init = function () {
+    RatingWidget.prototype.init = function () {
         this._paper.clear();
 
         var circ = this._paper.circle(LEFT, BOTTOM, RADIUS).attr({fill: '#000'});
@@ -39,7 +39,7 @@
         mood_text.node.onclick = function(){ that.show();};
     };
 
-    MoodWidget.prototype.show = function () {
+    RatingWidget.prototype.show = function () {
 
         this.init();
         for (var i = 0; i < this._mood; i += 1) {
