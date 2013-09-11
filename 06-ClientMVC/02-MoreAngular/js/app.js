@@ -66,45 +66,91 @@ myModule.controller('MainCtrl', function($scope, courseRaterModel, courseRaterHe
     };
 });
 
-angular.bootstrap($('#CourseRater'),['CourseRater']);
+myModule.directive('ratingElement', function(){
 
-//myModule.controller('TimeCtrl', function($scope){
-//    $scope.format = 'M/d/yy h:mm:ss a';
-//});
-//
-//myModule.directive('myCurrentTime', function($timeout, dateFilter) {
-//    // return the directive link function. (compile function not needed)
-//    return function(scope, element, attrs) {
-//        var format,  // date format
-//            timeoutId; // timeoutId, so that we can cancel the time updates
-//
-//        // used to update the UI
-//        function updateTime() {
-//            element.text(dateFilter(new Date(), format));
-//        }
-//
-//        // watch the expression, and update the UI on change.
-//        scope.$watch(attrs.myCurrentTime, function(value) {
-//            format = value;
-//            updateTime();
-//        });
-//
-//        // schedule update in one second
-//        function updateLater() {
-//            // save the timeoutId for canceling
-//            timeoutId = $timeout(function() {
-//                updateTime(); // update DOM
-//                updateLater(); // schedule another update
-//            }, 1000);
-//        }
-//
-//        // listen on DOM destroy (removal) event, and cancel the next UI update
-//        // to prevent updating time after the DOM element was removed.
-//        element.on('$destroy', function() {
-//            $timeout.cancel(timeoutId);
-//        });
-//
-//        updateLater(); // kick off the UI update process.
-//    }
-//});
+    var render = function (scope, elem, attrs) {
+
+        var DrawingModule =  function DrawingModule(paper){
+            this._paper = paper;
+        };
+
+        DrawingModule.prototype.drawAnimatedCircle = function(color, radius, start, end, delay) {
+            var that = this;
+            setTimeout(function() {
+                that._paper.circle(start.left, start.bottom, radius).attr({
+                    "stroke": "none",
+                    "fill": color
+                }).animate({cx:end.left, cy: end.bottom , r:radius }, 2000, "bounce" ).toBack();
+            }, delay);
+        };
+
+        var moods = ['Rubbish', 'Not Good', 'Ok', 'Smily', 'Great!'];
+        var colors = ['#cc0000', '#a97e22', '#9f9136', '#7c9a2d', '#3a9a2d'];
+
+        var LEFT = 30;
+        var BOTTOM = 50;
+        var RADIUS = 20;
+
+        var RatingWidget = function RatingWidget(domElement, rating){
+            this._mood = rating;
+            this._paper = new Raphael(domElement, 350, 100);
+            this._drawingModule = new DrawingModule(this._paper);
+            this.init();
+        };
+
+        RatingWidget.prototype.setMood = function (mood) {
+            this._mood = mood;
+        };
+
+        RatingWidget.prototype.init = function () {
+            this._paper.clear();
+
+            var circ = this._paper.circle(LEFT, BOTTOM, RADIUS).attr({fill: '#000'});
+            var mood_text = this._paper.text(LEFT, BOTTOM, 'My\nRate').attr({fill: '#fff'});
+
+            var that = this;
+            circ.node.onclick = function(){ that.show();};
+            mood_text.node.onclick = function(){ that.show();};
+        };
+
+        RatingWidget.prototype.show = function () {
+
+            this.init();
+            for (var i = 0; i < this._mood; i += 1) {
+                var color = colors[this._mood - 1];
+                var start = {left: LEFT, bottom: BOTTOM};
+                var end = {left: LEFT + 42 * (i + 1), bottom: BOTTOM};
+                var delay = i * 50;
+                this._drawingModule.drawAnimatedCircle(color, RADIUS, start, end, delay);
+            }
+
+            this._paper.text(LEFT, BOTTOM + 30, moods[this._mood - 1]).attr({fill: colors[this._mood - 1]});
+        };
+
+
+        var node = elem.children('div');
+        if (node.length > 0){
+            node.empty();
+        }
+            node=document.createElement("div");
+            elem.append(node);
+
+        var ratingWidget = new RatingWidget(node, moods.indexOf(scope.rating.rating)+1);
+        ratingWidget.show();
+    };
+
+    return {
+        restrict: 'A',
+//        replace: true,
+        templateUrl: "ratingElement.html",
+        link: function(scope, elem, attrs){
+            scope.$watch('rating', function () {
+                console.log("******** directive usage");
+                render(scope, elem, attrs);
+            }, true);
+        }
+    }
+});
+
+angular.bootstrap($('#CourseRater'),['CourseRater']);
 

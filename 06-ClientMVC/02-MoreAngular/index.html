@@ -4,6 +4,7 @@
     <script src="js/vendor/jquery-2.0.3.min.js"></script>
     <script src="js/vendor/angular-1.0.7.min.js"></script>
     <script src="js/vendor/moment-2.1.0.min.js"></script>
+    <script src="js/vendor/raphael-2.1.2.min.js"></script>
 
 
     <!--<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">-->
@@ -20,11 +21,17 @@
         <p>Demonstrating a Master-Detail View with AngularJS App.</p>
     </div>
     <div id="CourseRater" class="row-fluid" ng-controller="MainCtrl">
+
+        <script type="text/ng-template" id="ratingElement.html">
+            <h4>{{rating.rating}}</h4>
+            <p>{{ rating.reporter }}, {{rating.date}}</p>
+            <rating_element data-ng-model="rating.rating"></rating_element>
+        </script>
+
         <div class="span4 sidebar-content">
             <h2>Ratings</h2>
             <div class="rating" ng-repeat="rating in ratings" ng-click="setCurrentRating(rating)">
-                <h4>{{rating.rating}}</h4>
-                <p>{{ rating.reporter }}, {{rating.date}}</p>
+                <div rating-element></div>
             </div>
             <br>
             <a class="btn" ng-click="createRating()" ><i class="icon-plus"></i></a>
@@ -59,6 +66,7 @@
                 </div>
             </form>
         </div>
+
     </div>
     <hr>
     <footer id="TimeFooter">
@@ -72,6 +80,9 @@
     </footer>
 
 </div>
+
+
+
 <script type="text/javascript" src="js/app.js"></script>
 <script type="text/javascript" src="js/time.js"></script>
 </body>
