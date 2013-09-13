@@ -23,6 +23,49 @@ lesson("About Functions", function() {
 
     });
 
+    learn("about function hoisting", function(){
+        function a(){
+            return doSomething(); // A function declaration can be used before it is declared
+
+            function doSomething(){
+                return 1;
+            }
+        }
+
+        function b(){
+            try {
+                return doSomething(); // An anonymous function expression can only be used after it has ben instantiated
+            }
+            catch (e) {
+                return 2;
+            }
+
+            var doSomething = function (){
+                return 1;
+            }
+        }
+
+        expect(a()).toBe(FILL_ME_IN);
+        expect(b()).toBe(FILL_ME_IN);
+    });
+
+    learn("how to pass functions as values", function () {
+
+        var appendRules = function (name) {
+            return name + " rules!";
+        };
+
+        var appendDoubleRules = function (name) {
+            return name + " totally rules!";
+        };
+
+        var praiseSinger = { givePraise: appendRules };
+        expect(praiseSinger.givePraise("John")).toBe(FILL_ME_IN);
+
+        praiseSinger.givePraise = appendDoubleRules;
+        expect(praiseSinger.givePraise("Mary")).toBe(FILL_ME_IN);
+    });
+
     learn("how function arguments are handled", function () {
 
         function returnFirstArg(firstArg) {
@@ -142,47 +185,31 @@ lesson("About Functions", function() {
         expect(mysteryFunction3(10) + mysteryFunction5(5)).toBe(FILL_ME_IN);
     });
 
-    learn("how to pass functions as values", function () {
+    learn("about currying", function(){
+        var curry = function () {
+            var firstCallArgs = Array.prototype.slice.call(arguments),
+                func = firstCallArgs.pop();
 
-        var appendRules = function (name) {
-            return name + " rules!";
+            return function () {
+                var secondCallArgs = Array.prototype.slice.call(arguments);
+                return func.apply(this, firstCallArgs.concat(secondCallArgs));
+            };
         };
 
-        var appendDoubleRules = function (name) {
-            return name + " totally rules!";
+        var sum = function(a, b) {
+            return a + b;
         };
 
-        var praiseSinger = { givePraise: appendRules };
-        expect(praiseSinger.givePraise("John")).toBe(FILL_ME_IN);
-
-        praiseSinger.givePraise = appendDoubleRules;
-        expect(praiseSinger.givePraise("Mary")).toBe(FILL_ME_IN);
-
-    });
-
-    learn("about function hoisting", function(){
-        function a(){
-            return doSomething();
-
-            function doSomething(){
-                return 1;
+        var concat = function() {
+            var buf = "";
+            for (var i = 0; i < arguments.length; i++) {
+                if (i != 0) buf += " ";
+                buf += arguments[i];
             }
-        }
+            return buf;
+        };
 
-        function b(){
-            try {
-                return doSomething();
-            }
-            catch (e) {
-                return 2;
-            }
-
-            var doSomething = function (){
-                return 1;
-            }
-        }
-
-        expect(a()).toBe(FILL_ME_IN);
-        expect(b()).toBe(FILL_ME_IN);
+        expect(curry(10, sum)(32)).toBe(FILL_ME_IN);
+        expect(curry("Higher", "order", "functions", concat)("add", "more", "power", "to", "JavaScript")).toBe(FILL_ME_IN);
     });
 });
