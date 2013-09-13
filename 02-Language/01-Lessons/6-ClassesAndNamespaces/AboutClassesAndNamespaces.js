@@ -19,7 +19,7 @@ lesson("About Classes and Namespaces", function () {
 
     learn("how to implement a namespace", function () {
 
-        // We have to definitions of product() in two different Namespaces
+        // We have two definitions of product() in two different Namespaces
         var product1 = new NAMESPACE1.product();
         var product2 = new NAMESPACE2.product();
 
